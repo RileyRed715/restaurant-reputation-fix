@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reputation Rescue Pro | Fix Restaurant Reviews Fast</title>
+    <style>
+        :root {
+            --primary: #dc2626;  /* Urgent red for conversions */
+            --secondary: #0f172a;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            border: 1px solid #fee2e2;
+        }
+        
+        /* Header with urgency */
+        header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e293b 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .urgent-badge {
+            position: absolute;
+            top: 20px;
+            right: -40px;
+            background: var(--primary);
+            color: white;
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        header p {
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            font-size: 1.2rem;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 25px;
+            border-radius: 10px;
+            min-width: 200px;
+        }
+        
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            padding: 50px 30px;
+            background: #fff;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: #64748b;
+        }
+        
+        .plans {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .plan-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            border-color: var(--accent);
+        }
+        
+        .plan-card.popular {
+            border: 2px solid var(--accent);
+            transform: scale(1.03);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--secondary);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .plan-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin: 15px 0;
+            line-height: 1;
+        }
+        
+        .price span {
+            font-size: 1.2rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .price-note {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .discount-badge {
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 25px 0;
+            flex-grow: 1;
+        }
+        
+        ul li {
+            padding: 12px 0;
+            display: flex;
+            align-items: flex-start;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        
+        ul li:last-child {
+            border-bottom: none;
+        }
+        
+        ul li:before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.3), 0 2px 4px -1px rgba(220, 38, 38, 0.2);
+        }
+        
+        .btn:hover {
+            background: #c52222;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3), 0 4px 6px -2px rgba(220, 38, 38, 0.2);
+        }
+        
+        .btn.secondary {
+            background: var(--light);
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+            box-shadow: none;
+        }
+        
+        .btn.secondary:hover {
+            background: #f1f5f9;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: #f8fafc;
+            padding: 60px 30px;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .author-info h4 {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        /* Guarantee */
+        .guarantee-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1e293b 100%);
+            padding: 70px 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .guarantee-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .guarantee-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .guarantee-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .guarantee-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            padding: 30px;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        .guarantee {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            color: white;
+        }
+        
+        .payment-logos {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .payment-logo {
+            height: 30px;
+            filter: grayscale(100%) brightness(200%);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .plans {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .plan-card {
+                max-width: 100%;
+            }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .stat-item {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="urgent-badge">LIMITED TIME OFFER</div>
+            <h1>Stop Losing Customers to Bad Reviews</h1>
+            <p>94% of diners avoid restaurants with negative reviews. Our proven system turns complaints into 5-star testimonials automatically</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value">4.7★</div>
+                    <div>Average Rating Improvement</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">+42%</div>
+                    <div>More Customers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">23 min</div>
+                    <div>Avg. Response Time</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="pricing-section">
+            <div class="section-header">
+                <h2>Choose Your Reputation Rescue Plan</h2>
+                <p>Join 1,247+ restaurants that turned their reputation around last month</p>
+            </div>
+            
+            <div class="plans">
+                <div class="plan-card">
+                    <h3>Emergency Fix</h3>
+                    <div class="price">$67 <span>one-time</span></div>
+                    <div class="price-note">Save $30 this week only</div>
+                    <ul>
+                        <li>Respond to ALL existing negative reviews</li>
+                        <li>Custom response templates for your restaurant</li>
+                        <li>Review monitoring setup</li>
+                        <li>7-day priority support</li>
+                        <li>Review audit report</li>
+                        <li>Competitor analysis</li>
+                    </ul>
+                    <button class="btn" onclick="startPayment('emergency')">Fix My Reviews Now</button>
+                </div>
+                
+                <div class="plan-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Premium Protection</h3>
+                    <div class="price">$97<span>/mo</span></div>
+                    <div class="price-note">First month $67 <span class="discount-badge">SAVE 31%</span></div>
+                    <ul>
+                        <li><strong>Everything in Emergency Fix PLUS:</strong></li>
+                        <li>24/7 review monitoring across all platforms</li>
+                        <li>Instant AI-powered response to ALL new reviews</li>
+                        <li>Competitor reputation tracking</li>
+                        <li>Monthly reputation growth reports</li>
+                        <li>Dedicated account manager</li>
+                        <li>Priority 24/7 support</li>
+                        <li>Social media review integration</li>
+                    </ul>
+                    <button class="btn" onclick="startPayment('premium')">Start Protecting My Business</button>
+                </div>
+                
+                <div class="plan-card">
+                    <h3>Annual Pro</h3>
+                    <div class="price">$997<span>/year</span></div>
+                    <div class="price-note">Only $83/mo <span class="discount-badge">SAVE $167</span></div>
+                    <ul>
+                        <li><strong>Everything in Premium PLUS:</strong></li>
+                        <li>2 months FREE compared to monthly</li>
+                        <li>Free Google Business Profile optimization</li>
+                        <li>Quarterly SEO audit</li>
+                        <li>Review generation system</li>
+                        <li>Unlimited response revisions</li>
+                        <li>Crisis management protocol</li>
+                        <li>VIP phone support</li>
+                    </ul>
+                    <button class="btn" onclick="startPayment('annual')">Get Best Value</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonials">
+            <div class="section-header">
+                <h2>Restaurants We've Rescued</h2>
+                <p>Don't just take our word for it</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "After a scathing review went viral, we lost 40% of our customers. Reputation Rescue had us back to 4.7★ in 2 weeks and now we're busier than ever!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MK</div>
+                        <div class="author-info">
+                            <h4>Michael K.</h4>
+                            <p>Owner, Brooklyn Pizza Co</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "The Premium plan pays for itself. We get 5-10 new positive reviews weekly and our response time to complaints is under 15 minutes. Game changer!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SD</div>
+                        <div class="author-info">
+                            <h4>Sarah D.</h4>
+                            <p>Manager, Coastal Grill</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Worth every penny. Our reservations increased by 60% after fixing our review profile. The annual plan is the best investment we've made this year."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TJ</div>
+                        <div class="author-info">
+                            <h4>Thomas J.</h4>
+                            <p>Owner, Mountain View Steakhouse</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="guarantee-section">
+            <div class="guarantee-box">
+                <h2>Our Iron-Clad Guarantee</h2>
+                <p>We're so confident you'll love our service that we offer an unconditional 14-day money-back guarantee. If your star rating doesn't increase by at least 0.5★ in the first month, we'll refund your payment and fix your reviews for free.</p>
+                
+                <div class="guarantee-content">
+                    <div class="guarantee-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM11 16L7 12L8.41 10.59L11 13.17L15.59 8.58L17 10L11 16Z" fill="#f59e0b"/>
+                        </svg>
+                        <span>14-day money-back guarantee</span>
+                    </div>
+                    
+                    <div class="guarantee-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM11 16L7 12L8.41 10.59L11 13.17L15.59 8.58L17 10L11 16Z" fill="#f59e0b"/>
+                        </svg>
+                        <span>No long-term contracts</span>
+                    </div>
+                    
+                    <div class="guarantee-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM11 16L7 12L8.41 10.59L11 13.17L15.59 8.58L17 10L11 16Z" fill="#f59e0b"/>
+                        </svg>
+                        <span>Cancel anytime</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="payment-logos">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Paystack_Logo.png" alt="Paystack" class="payment-logo" style="height: 25px">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg" alt="Mastercard" class="payment-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="payment-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" class="payment-logo">
+            </div>
+            <p>© 2025 Reputation Rescue Pro. All rights reserved.</p>
+            <div class="guarantee">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM11 16L7 12L8.41 10.59L11 13.17L15.59 8.58L17 10L11 16Z" fill="#f59e0b"/>
+                </svg>
+                <span>Secure payment via Paystack</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Paystack Inline JS -->
+    <script src="https://js.paystack.co/v1/inline.js"></script> 
+    
+    <script>
+        function startPayment(plan) {
+            // Configure based on plan selection
+            const planConfig = {
+                emergency: {
+                    amount: 6700, // in kobo ($67)
+                    label: "Emergency Reputation Fix",
+                },
+                premium: {
+                    amount: 6700, // $67 first month
+                    label: "Premium Monthly Protection (First Month)",
+                },
+                annual: {
+                    amount: 99700, // $997/year
+                    label: "Annual Pro Plan",
+                }
+            };
+            
+            const config = planConfig[plan];
+            
+            const handler = PaystackPop.setup({
+                key: 'pk_test_b1194b168ee842a037d132997405303d4f0e3761', // Replace with your Paystack public key
+                email: 'customer@example.com', // Will be collected from user
+                amount: config.amount,
+                currency: 'USD',
+                ref: 'RRP-' + Date.now(), // Unique reference
+                metadata: {
+                    plan: plan,
+                    custom_fields: [
+                        {display_name: "Restaurant Name", variable_name: "restaurant", value: ""}
+                    ]
+                },
+                callback: function(response) {
+                    // On successful payment
+                    window.location.href = 'https://yourdomain.com/thank-you?ref=' + response.reference;
+                },
+                onClose: function() {
+                    alert('Payment window closed. Your reviews are still at risk!');
+                }
+            });
+            
+            // Collect email and restaurant name
+            const email = prompt("Enter your email address:");
+            if (!email) return;
+            
+            const restaurant = prompt("Enter your restaurant name:");
+            
+            // Update handler with user info
+            handler.updateConfig({
+                email: email,
+                metadata: {
+                    custom_fields: [
+                        {display_name: "Restaurant Name", variable_name: "restaurant", value: restaurant}
+                    ]
+                }
+            });
+            
+            handler.openIframe();
+        }
+    </script>
+</body>
+</html>

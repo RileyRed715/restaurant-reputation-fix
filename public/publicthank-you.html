@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thank You! | Reputation Rescue Pro</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+    h1 {
+      color: #0f172a;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #64748b;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      background: #dc2626;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #c52222;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Thank You for Your Purchase!</h1>
+    <p>We've received your payment and are already working on your reputation rescue. You'll receive a confirmation email shortly with next steps.</p>
+    <p>Your order reference: <strong id="ref"></strong></p>
+    <a href="https://restaurantreviewfix.netlify.app" class="btn">Back to Home</a>
+  </div>
+
+  <script>
+    // Get reference from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const ref = urlParams.get('ref');
+    if (ref) {
+      document.getElementById('ref').textContent = ref;
+    }
+  </script>
+</body>
+</html>
